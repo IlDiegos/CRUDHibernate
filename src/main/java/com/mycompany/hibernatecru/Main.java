@@ -76,8 +76,16 @@ public class Main {
                         break;
 
                     case 2:
+
+                        Query listarAnteriores = s.createQuery("FROM Pedido");
+
+                        ArrayList<Pedido> listarAntes = (ArrayList<Pedido>) listarAnteriores.list();
+                        listarAntes.forEach((aa) -> System.out.println(aa));
+                        
                         System.out.println("Selecciona el pedido a borrar: ");
                         int param = sc.nextInt();
+                        
+                        
                         Transaction transaction = s.beginTransaction();
                         Query borrar = s.createQuery("DELETE FROM Pedido where id=:id");
 
